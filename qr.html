@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clamason — Report a Near Miss</title>
+    <link rel="stylesheet" href="/qr.css" />
+</head>
+
+<body>
+
+    <div class="poster">
+
+        <!-- TOP BAND -->
+        <div class="top-band">
+            <img src="/icons/icon-192.png" alt="Clamason" class="logo" onerror="this.style.display='none'" />
+            <div class="top-text">
+                <span class="company">Clamason</span>
+                <span class="tagline">Health &amp; Safety Reporting</span>
+            </div>
+        </div>
+
+        <!-- HERO -->
+        <div class="hero">
+            <h1>See Something?</h1>
+            <h2>Say Something.</h2>
+            <p class="hero-sub">
+                Help us keep everyone safe by reporting near misses
+                and safety observations — it only takes 60 seconds.
+            </p>
+        </div>
+
+        <!-- QR SECTION -->
+        <div class="qr-section">
+            <div class="qr-frame">
+                <div class="qr-inner">
+                    <img id="qrImg" src="" alt="QR Code" />
+                </div>
+            </div>
+            <div class="qr-instructions">
+                <div class="step">
+                    <span class="step-num">1</span>
+                    <span class="step-text">Open your phone camera</span>
+                </div>
+                <div class="step">
+                    <span class="step-num">2</span>
+                    <span class="step-text">Point it at the QR code</span>
+                </div>
+                <div class="step">
+                    <span class="step-num">3</span>
+                    <span class="step-text">Tap the link that appears</span>
+                </div>
+                <div class="step">
+                    <span class="step-num">4</span>
+                    <span class="step-text">Fill in the short form</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- URL PILL -->
+        <div class="url-section">
+            <span class="url-label">Or visit directly:</span>
+            <span class="url-pill" id="urlPill">Loading...</span>
+        </div>
+
+        <!-- BOTTOM BAND -->
+        <div class="bottom-band">
+            <div class="bottom-items">
+                <div class="bottom-item">
+                    <span class="bottom-icon">⚠️</span>
+                    <span>Near Misses</span>
+                </div>
+                <div class="divider"></div>
+                <div class="bottom-item">
+                    <span class="bottom-icon">👁️</span>
+                    <span>Observations</span>
+                </div>
+                <div class="divider"></div>
+                <div class="bottom-item">
+                    <span class="bottom-icon">🔒</span>
+                    <span>Anonymous Option</span>
+                </div>
+            </div>
+            <p class="bottom-msg">
+                All reports are reviewed by the Maintenance &amp; Safety team.
+                Your report could prevent a serious injury.
+            </p>
+        </div>
+
+        <!-- PRINT BUTTON (hidden when printing) -->
+        <button class="btn-print" onclick="window.print()">🖨️ Print Poster</button>
+
+    </div>
+
+    <script>
+        async function loadQR() {
+            try {
+                const res = await fetch('/api/qrcode');
+                const data = await res.json();
+                if (data.success) {
+                    document.getElementById('qrImg').src = data.qr;
+                    document.getElementById('urlPill').textContent = data.url;
+                }
+            } catch (err) {
+                console.error('Failed to load QR code', err);
+            }
+        }
+        loadQR();
+    </script>
+
+</body>
+
+</html>

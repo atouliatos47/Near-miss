@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#243547" />
+    <title>Clamason Obs Logger — Admin</title>
+    <link rel="stylesheet" href="/admin.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="header-inner">
+            <img src="/icons/icon-192.png" alt="Clamason" class="logo" onerror="this.style.display='none'" />
+            <div>
+                <h1>Observation Dashboard</h1>
+                <p class="subtitle">Near Miss &amp; Safety Reports</p>
+            </div>
+            <div class="live-badge" id="liveBadge">
+                <span class="live-dot"></span>
+                <span>LIVE</span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- STATS CARDS -->
+        <section class="stats-grid">
+            <div class="stat-card total">
+                <span class="stat-icon">📋</span>
+                <div class="stat-info">
+                    <span class="stat-value" id="totalCount">0</span>
+                    <span class="stat-label">Total Reports</span>
+                </div>
+            </div>
+            <div class="stat-card near-miss">
+                <span class="stat-icon">⚠️</span>
+                <div class="stat-info">
+                    <span class="stat-value" id="nearMissCount">0</span>
+                    <span class="stat-label">Near Misses</span>
+                </div>
+            </div>
+            <div class="stat-card observation">
+                <span class="stat-icon">👁️</span>
+                <div class="stat-info">
+                    <span class="stat-value" id="observationCount">0</span>
+                    <span class="stat-label">Observations</span>
+                </div>
+            </div>
+            <div class="stat-card resolved-card" id="resolvedToggle">
+                <span class="stat-icon">✅</span>
+                <div class="stat-info">
+                    <span class="stat-value" id="resolvedCount">0</span>
+                    <span class="stat-label">Resolved</span>
+                </div>
+                <span class="resolved-chevron" id="resolvedChevron">▼</span>
+            </div>
+        </section>
+
+        <!-- PARETO CHART -->
+        <div class="chart-card">
+            <div class="chart-header" id="paretoToggle">
+                <h2 class="chart-title">📊 Reports by Department</h2>
+                <div class="chart-legend">
+                    <span class="legend-item">
+                        <span class="legend-dot" style="background:#243547"></span>Reports
+                    </span>
+                    <span class="legend-item">
+                        <span class="legend-line" style="background:#95C11F"></span>Cumulative %
+                    </span>
+                </div>
+                <span class="resolved-chevron" id="paretoChevron">▼</span>
+            </div>
+            <div class="chart-wrap hidden" id="paretoWrap">
+                <canvas id="paretoChart"></canvas>
+            </div>
+        </div>
+
+        <!-- FILTERS -->
+        <section class="filters">
+            <select id="filterType">
+                <option value="">All Types</option>
+                <option value="Near Miss">Near Miss</option>
+                <option value="Observation">Observation</option>
+            </select>
+            <select id="filterDept">
+                <option value="">All Departments</option>
+                <option value="Press Shop">Press Shop</option>
+                <option value="Assembly">Assembly</option>
+                <option value="Maintenance">Maintenance</option>
+                <option value="Quality">Quality</option>
+                <option value="Stores">Stores</option>
+                <option value="Despatch">Despatch</option>
+                <option value="Office">Office</option>
+                <option value="Other">Other</option>
+            </select>
+        </section>
+
+        <!-- OPEN REPORTS -->
+        <div class="section-header">
+            <h2 class="section-title">🔴 Open Reports</h2>
+            <span class="section-count" id="openCount">0</span>
+        </div>
+        <section id="reportsList" class="reports-list">
+            <div class="loading">Connecting to live feed...</div>
+        </section>
+        <div id="emptyOpen" class="empty-state hidden">
+            <span>✅</span>
+            <p>No open reports — all clear!</p>
+        </div>
+
+        <!-- RESOLVED REPORTS -->
+        <div id="resolvedSection" class="resolved-section hidden">
+            <div class="section-header resolved-header">
+                <h2 class="section-title">✅ Resolved Reports</h2>
+                <span class="section-count" id="resolvedCountSection">0</span>
+            </div>
+            <section id="resolvedList" class="reports-list"></section>
+            <div id="emptyResolved" class="empty-state hidden">
+                <span>📭</span>
+                <p>No resolved reports yet</p>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- PHOTO LIGHTBOX -->
+    <div id="lightbox" class="lightbox hidden">
+        <div class="lightbox-overlay" id="lightboxOverlay"></div>
+        <div class="lightbox-content">
+            <button class="lightbox-close" id="lightboxClose">✕</button>
+            <img id="lightboxImg" src="" alt="Report Photo" />
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>Clamason — Safety First</p>
+    </footer>
+
+    <script src="/admin.js"></script>
+</body>
+
+</html>
