@@ -1,0 +1,299 @@
+/* ── Reset & Base ── */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --navy: #243547;
+    --navy-light: #2D4A5C;
+    --green: #95C11F;
+    --green-dark: #7DC242;
+    --white: #ffffff;
+    --light-bg: #f4f6f8;
+    --radius: 12px;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background: var(--light-bg);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 16px;
+}
+
+/* ── Poster ── */
+.poster {
+    background: var(--white);
+    border-radius: 20px;
+    overflow: hidden;
+    width: 100%;
+    max-width: 620px;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.12);
+    display: flex;
+    flex-direction: column;
+}
+
+/* ── Top Band ── */
+.top-band {
+    background: var(--navy);
+    padding: 20px 28px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.logo {
+    height: 54px;
+    width: auto;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.top-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.company {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: 0.3px;
+}
+
+.tagline {
+    font-size: 0.8rem;
+    color: var(--green);
+    margin-top: 3px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+}
+
+/* ── Hero ── */
+.hero {
+    background: var(--navy);
+    padding: 32px 28px 36px;
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.hero h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--green);
+    line-height: 1;
+    letter-spacing: -1px;
+}
+
+.hero h2 {
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--white);
+    line-height: 1;
+    letter-spacing: -1px;
+    margin-bottom: 16px;
+}
+
+.hero-sub {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.7);
+    max-width: 420px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* ── QR Section ── */
+.qr-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    padding: 36px 28px;
+    background: var(--white);
+    flex-wrap: wrap;
+}
+
+.qr-frame {
+    flex-shrink: 0;
+    background: var(--navy);
+    border-radius: 20px;
+    padding: 12px;
+    box-shadow: 0 4px 20px rgba(36, 53, 71, 0.2);
+}
+
+.qr-inner {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.qr-inner img {
+    width: 200px;
+    height: 200px;
+    display: block;
+}
+
+/* ── Steps ── */
+.qr-instructions {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.step {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.step-num {
+    width: 32px;
+    height: 32px;
+    background: var(--green);
+    color: var(--navy);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+}
+
+.step-text {
+    font-size: 0.95rem;
+    color: var(--navy);
+    font-weight: 500;
+}
+
+/* ── URL Pill ── */
+.url-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 0 28px 28px;
+    flex-wrap: wrap;
+}
+
+.url-label {
+    font-size: 0.82rem;
+    color: #6b7c93;
+    font-weight: 500;
+}
+
+.url-pill {
+    background: var(--light-bg);
+    color: var(--navy);
+    font-size: 0.85rem;
+    font-weight: 700;
+    padding: 6px 16px;
+    border-radius: 20px;
+    border: 2px solid #dde2e8;
+    letter-spacing: 0.3px;
+}
+
+/* ── Bottom Band ── */
+.bottom-band {
+    background: var(--navy);
+    padding: 20px 28px;
+}
+
+.bottom-items {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 14px;
+    flex-wrap: wrap;
+}
+
+.bottom-item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    color: var(--white);
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.bottom-icon {
+    font-size: 1.1rem;
+}
+
+.divider {
+    width: 1px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.bottom-msg {
+    text-align: center;
+    font-size: 0.78rem;
+    color: rgba(255, 255, 255, 0.55);
+    line-height: 1.5;
+    max-width: 480px;
+    margin: 0 auto;
+}
+
+/* ── Print Button ── */
+.btn-print {
+    margin: 20px auto;
+    display: block;
+    padding: 12px 28px;
+    background: var(--green);
+    color: var(--navy);
+    border: none;
+    border-radius: var(--radius);
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-print:hover {
+    background: var(--green-dark);
+}
+
+/* ── Print Styles ── */
+@media print {
+    body {
+        background: white;
+        padding: 0;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .poster {
+        box-shadow: none;
+        border-radius: 20px;
+        max-width: 100%;
+        overflow: hidden;
+    }
+
+    .top-band,
+    .hero,
+    .bottom-band {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .step-num {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .btn-print {
+        display: none !important;
+    }
+}

@@ -1,0 +1,352 @@
+/* ── Reset & Base ── */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --navy: #243547;
+    --navy-light: #2D4A5C;
+    --green: #95C11F;
+    --green-dark: #7DC242;
+    --white: #ffffff;
+    --light-bg: #f4f6f8;
+    --border: #dde2e8;
+    --text: #1a2633;
+    --text-muted: #6b7c93;
+    --error: #e53935;
+    --success: #43a047;
+    --radius: 12px;
+    --shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background: var(--light-bg);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ── Header ── */
+header {
+    background: var(--navy);
+    color: var(--white);
+    padding: 16px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.header-inner {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.logo {
+    height: 64px;
+    width: auto;
+    object-fit: contain;
+}
+
+header h1 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--green);
+    line-height: 1.2;
+}
+
+.subtitle {
+    font-size: 0.78rem;
+    color: rgba(255, 255, 255, 0.65);
+    margin-top: 2px;
+}
+
+/* ── Main ── */
+main {
+    flex: 1;
+    max-width: 600px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px 16px 40px;
+}
+
+/* ── Form Groups ── */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label:first-child {
+    display: block;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+    color: var(--navy);
+}
+
+.required {
+    color: var(--error);
+    margin-left: 2px;
+}
+
+.optional {
+    font-weight: 400;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+}
+
+/* ── Inputs & Selects ── */
+input[type="text"],
+select,
+textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 2px solid var(--border);
+    border-radius: var(--radius);
+    font-size: 0.95rem;
+    font-family: inherit;
+    color: var(--text);
+    background: var(--white);
+    transition: border-color 0.2s;
+    appearance: none;
+}
+
+input[type="text"]:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--green);
+}
+
+select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23243547' d='M0 0l6 8 6-8z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 36px;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 90px;
+}
+
+/* ── Type Cards ── */
+.type-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    max-width: 340px;
+}
+
+.type-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 10px;
+    border: 2px solid var(--border);
+    border-radius: var(--radius);
+    cursor: pointer;
+    background: var(--white);
+    transition: all 0.2s;
+    user-select: none;
+}
+
+.type-card input[type="radio"] {
+    display: none;
+}
+
+.type-icon {
+    font-size: 1.8rem;
+    margin-bottom: 6px;
+}
+
+.type-label {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--text);
+    text-align: center;
+}
+
+.type-card:has(input:checked) {
+    border-color: var(--green);
+    background: #f0f9e0;
+}
+
+.type-card.near-miss:has(input:checked) {
+    border-color: #f57c00;
+    background: #fff8f0;
+}
+
+/* ── Photo Upload ── */
+.photo-upload {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 20px;
+    border: 2px dashed var(--border);
+    border-radius: var(--radius);
+    background: var(--white);
+    cursor: pointer;
+    transition: border-color 0.2s;
+    text-align: center;
+}
+
+.photo-upload:hover {
+    border-color: var(--green);
+}
+
+.photo-icon {
+    font-size: 2rem;
+}
+
+.photo-upload span:last-of-type {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.photo-upload input[type="file"] {
+    display: none;
+}
+
+#photoPreview {
+    margin-top: 12px;
+    text-align: center;
+}
+
+#photoPreview img {
+    max-width: 100%;
+    max-height: 220px;
+    border-radius: var(--radius);
+    border: 2px solid var(--border);
+    object-fit: cover;
+}
+
+.btn-remove {
+    display: block;
+    margin: 8px auto 0;
+    background: none;
+    border: none;
+    color: var(--error);
+    font-size: 0.85rem;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+/* ── Error Messages ── */
+.error-msg {
+    display: none;
+    color: var(--error);
+    font-size: 0.8rem;
+    margin-top: 5px;
+    font-weight: 500;
+}
+
+.error-msg.visible {
+    display: block;
+}
+
+input.invalid,
+select.invalid,
+textarea.invalid {
+    border-color: var(--error);
+}
+
+/* ── Submit Button ── */
+.btn-submit {
+    width: 100%;
+    padding: 16px;
+    background: var(--green);
+    color: var(--navy);
+    border: none;
+    border-radius: var(--radius);
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+    margin-top: 8px;
+    letter-spacing: 0.3px;
+}
+
+.btn-submit:hover {
+    background: var(--green-dark);
+}
+
+.btn-submit:active {
+    transform: scale(0.98);
+}
+
+.btn-submit:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* ── Success Screen ── */
+.success-card {
+    text-align: center;
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 48px 24px;
+    box-shadow: var(--shadow);
+    margin-top: 20px;
+}
+
+.success-icon {
+    font-size: 4rem;
+    margin-bottom: 16px;
+}
+
+.success-card h2 {
+    color: var(--navy);
+    font-size: 1.5rem;
+    margin-bottom: 8px;
+}
+
+.success-card p {
+    color: var(--text-muted);
+    margin-bottom: 28px;
+}
+
+.btn-primary {
+    padding: 14px 32px;
+    background: var(--green);
+    color: var(--navy);
+    border: none;
+    border-radius: var(--radius);
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-primary:hover {
+    background: var(--green-dark);
+}
+
+/* ── Footer ── */
+footer {
+    text-align: center;
+    padding: 16px;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    border-top: 1px solid var(--border);
+}
+
+/* ── Utilities ── */
+.hidden {
+    display: none !important;
+}
