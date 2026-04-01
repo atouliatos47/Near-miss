@@ -1,0 +1,4 @@
+node_modules/
+uploads/
+.env
+node-v24.14.1-win-x64/
